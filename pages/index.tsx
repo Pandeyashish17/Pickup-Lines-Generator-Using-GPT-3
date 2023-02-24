@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import Head from "next/head";
 interface ApiResponse {
   line: string;
 }
@@ -11,6 +12,24 @@ export default function PickupLineGenerator() {
   const [pickupLines, setPickupLines] = useState<string[]>([]);
   const [count, setCount] = useState(3);
   const [apiKey, setApiKey] = useState("");
+  const [pageTitle, setPageTitle] = useState(
+    "PickUp Lines Generator using GPT-3"
+  );
+
+  useEffect(() => {
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+  }, []);
+
+  const handleVisibilityChange = () => {
+    if (document.hidden) {
+      setPageTitle("Hey Daddy! Please Come Back");
+    } else {
+      setPageTitle("PickUp Lines Generator using GPT-3");
+    }
+  };
 
   const generatePickupLines = async (count: number) => {
     try {
@@ -39,6 +58,22 @@ export default function PickupLineGenerator() {
 
   return (
     <div className="max-w-2xl mx-auto mt-8 p-4 border rounded-md">
+      <Head>
+        <meta name="title" content="PickUp Lines Generator using GPT-3" />
+        <meta
+          name="description"
+          content="Unleash your charm with our Pickup Lines Generator powered by GPT-3! Find clever, flirty, and romantic lines in just a few clicks. Try it now!"
+        />
+        <meta
+          name="keywords"
+          content="pickup lines, generator, GPT-3, first impression, icebreaker, flirting, romance, AI-powered, conversation starter, charm"
+        />
+        <meta name="robots" content="index, follow" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="language" content="English" />
+        <meta name="author" content="Ashish Pandey" />
+        <title>{pageTitle}</title>
+      </Head>
       <div className="mb-5 flex gap-2 flex-col">
         <center className="font-bold text-3xl ">Pickup Line Generator</center>
         <p>
