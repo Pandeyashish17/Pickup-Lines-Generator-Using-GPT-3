@@ -32,6 +32,10 @@ export default function PickupLineGenerator() {
   };
 
   const generatePickupLines = async (count: number) => {
+
+    if(count > 10){
+      return toast.error("cannot do more than ten")
+      }
     try {
       setLoading(true);
       const response = await axios.get<ApiResponse[]>(`/api/generate`, {
