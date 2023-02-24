@@ -34,7 +34,7 @@ export default function PickupLineGenerator() {
   const generatePickupLines = async (count: number) => {
 
     if(count > 10){
-      return toast.error("cannot do more than ten")
+      return toast.error("Cannot do more than ten pickup lines at a time")
       }
     try {
       setLoading(true);
