@@ -17,6 +17,7 @@ export default function Document() {
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="language" content="English" />
         <meta name="author" content="Ashish Pandey" />
+        <title>PickUp Lines Generator using GPT-3</title>
       </Head>
       <body>
         <Main />
